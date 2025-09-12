@@ -1,4 +1,8 @@
 import mongoose , {Schema} from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+
 const userSchema = new Schema(
     {
         username : {
@@ -23,13 +27,23 @@ const userSchema = new Schema(
             lowecase : true,
         },
         avatar : {
+            type : string, // CLOUDINARY URL
+            required : true ,
 
         },
         coverimage : {
+            type : string, // CLOUDNINARY URL
 
         },
-        password : {
 
+    watchHistory : {
+             type : Schema.Types.ObjectId,
+             ref : "video"
+    },
+
+        password : {
+             type : string,
+             required : true,
         },
         refreshToken : {
 
@@ -44,4 +58,4 @@ const userSchema = new Schema(
 
 
 
-export const User = mongoose.model("User,userSchema")
+export const User = mongoose.model("User",userSchema)

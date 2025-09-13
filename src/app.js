@@ -15,11 +15,11 @@ app.use(cookieParser())
 
 // routes importing
 
-import userRouter from './routes/user.routes'
+import userRoutes from "./routes/user.routes.js"
 
 //  creating routes
 
-app.use("/users",userRouter);
+app.use("/users", userRoutes);
 
 
 

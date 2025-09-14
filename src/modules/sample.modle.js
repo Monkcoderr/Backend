@@ -19,6 +19,34 @@ const sampleSchema = new mongoose.Schema(
             lowecase : true,
             index : true
         },
+         email:{
+            type : String,
+            required : true,
+            unique : true,
+            lowecase : true,
+        },
+        avatar : {
+            type : string, // CLOUDINARY URL
+            required : true ,
+
+        },
+        coverimage : {
+            type : string, // CLOUDNINARY URL
+
+        },
+
+    watchHistory : {
+             type : Schema.Types.ObjectId,
+             ref : "video"
+    },
+
+        password : {
+             type : string,
+             required : true,
+        },
+        refreshToken : {
+
+        }
     }
 )
 

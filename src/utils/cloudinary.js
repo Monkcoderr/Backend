@@ -22,7 +22,7 @@ import path from 'path';
             
             })
             console.log("file upload succesfully", response.url)
-            
+            return response;
         } catch (error) {
            fs.unlinkSync(localFilePath)
            return null

@@ -35,7 +35,18 @@ const sampleSchema = new mongoose.Schema(
 
         },
 
-    watchHistory : {
+   
+        
+         watchHistory : {
+             type : Schema.Types.ObjectId,
+             ref : "video"
+    } watchHistory : {
+             type : Schema.Types.ObjectId,
+             ref : "video"
+    } watchHistory : {
+             type : Schema.Types.ObjectId,
+             ref : "video"
+    } watchHistory : {
              type : Schema.Types.ObjectId,
              ref : "video"
     },

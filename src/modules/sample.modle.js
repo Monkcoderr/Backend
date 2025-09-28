@@ -12,7 +12,6 @@ const sampleSchema = new mongoose.Schema(
             trim : true,
             index : true
         },
-        
         fullname : {
             type : String,
             required : true,

@@ -22,6 +22,10 @@ if (
     if (existed) {
         throw new ApiError()
     }
+
+const avatarLocalPath = req.files?.avatar[0]?.path;
+
+
 } )
 
 

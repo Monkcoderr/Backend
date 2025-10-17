@@ -27,12 +27,12 @@ const userSchema = new Schema(
             lowecase : true,
         },
         avatar : {
-            type : string, // CLOUDINARY URL
+            type : String, // CLOUDINARY URL
             required : true ,
 
         },
         coverimage : {
-            type : string, // CLOUDNINARY URL
+            type : String, // CLOUDNINARY URL
 
         },
 
@@ -42,7 +42,7 @@ const userSchema = new Schema(
     },
 
         password : {
-             type : string,
+             type : String,
              required : true,
         },
         refreshToken : {

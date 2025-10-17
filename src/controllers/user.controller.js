@@ -3,7 +3,7 @@
 import asynchandler from "../utils/asynchandler.js";
 import {ApiError} from "../utils/ApiError.js"
 import {User} from "../models/user.model.js"
-import {uploadOnCloudinary} from "../utils/cloudinary.js"
+import {uploadOnCloudniary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
@@ -35,8 +35,8 @@ if (!avatarLocalPath){
     throw new ApiError(400, "avatar file is rerquired")
 }
   
-const avatar = await uploadOnCloudinary(avatarLocalPath)
-const coverImage = await uploadOnCloudinary(coverImageLocalPath)
+const avatar = await uploadOnCloudniary(avatarLocalPath)
+const coverImage = await uploadOnCloudniary(coverImageLocalPath)
 
 if (!avatar){
     throw new ApiError(400,"Avatar is missing")

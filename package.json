@@ -4,9 +4,9 @@
   "description": "backend first step\r nothing new",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "dev": " nodemon src/index.js"
-  },
+ "scripts": {
+  "dev": "nodemon --exec \"node --env-file=.env src/index.js\""
+},
   "author": "",
   "license": "ISC",
   "dependencies": {

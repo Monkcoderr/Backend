@@ -1,4 +1,4 @@
-// 
+
 
 import asynchandler from "../utils/asynchandler.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -27,7 +27,8 @@ const registerUser = asynchandler(async (req, res) => {
 
     // 4. Get local file paths from multer
     const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // Line 30
+const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
 
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required");

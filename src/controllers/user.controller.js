@@ -72,7 +72,30 @@ const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
 });
 
 const loginUser = asynchandler( async (req ,res) => {
-    
+
+    const {username , email , password} = req.body;
+
+    if(!username || !email){
+        throw new ApiError(400, "username or eamil is required")
+    }
+   
+     const user = await User.findOne({
+        $or : [{username}, {email}]
+    })
+
+    if (!user) {
+        throw new ApiError(404,"user not found")
+    }
+
+    const isPasswordValid =  await user.isPasswordCorrect(password)
+
+    if (!isPasswordValid) {
+        throw new ApiError(400,"Invalid User Credentials")
+    }
+
+
+
+
 })
 
 

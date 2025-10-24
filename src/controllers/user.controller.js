@@ -71,6 +71,25 @@ const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
     );
 });
 
+const generateAccessAndRefreshToken = async(userId) =>{
+    try {
+        const user = await User.findById(userId)
+        const accessToken =  user.generateAccessToken()
+        const refreshToken =  user.generateRefreshToken()
+
+        user.refreshToken = refreshToken
+      await  user.save({validateBeforeSave : false})
+        return {accessToken , refreshToken}
+
+    } catch (error) {
+        throw new ApiError(500,"something went wrong while generating refresh and access token")
+    }
+}
+
+
+
+
+
 const loginUser = asynchandler( async (req ,res) => {
 
     const {username , email , password} = req.body;
@@ -93,8 +112,26 @@ const loginUser = asynchandler( async (req ,res) => {
         throw new ApiError(400,"Invalid User Credentials")
     }
 
+ const {accessToken , refreshToken} = await generateAccessAndRefreshToken(user._id)
+// We create options for our cookie
+const options = {
+    httpOnly: true,
+    secure: true
+};
 
-
+return res
+    .status(200)
+    .cookie("accessToken", accessToken, options) // ⬅️ Send the access token as a cookie
+    .cookie("refreshToken", refreshToken, options) // ⬅️ Send the refresh token as a cookie
+    .json(
+        new ApiResponse(
+            200,
+            {
+                user: loggedInUser,
+            },
+            "User logged in successfully"
+        )
+    );
 
 })
 

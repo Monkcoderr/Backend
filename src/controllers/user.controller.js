@@ -71,4 +71,12 @@ const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
     );
 });
 
-export default registerUser;
+const loginUser = asynchandler( async (req ,res) => {
+    
+})
+
+
+
+export {registerUser,
+    loginUser
+} ;

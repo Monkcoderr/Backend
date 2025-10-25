@@ -9,7 +9,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 const registerUser = asynchandler(async (req, res) => {
     // 1. Get data from request body
     const { fullname, email, username, password } = req.body;
-    console.log("email", email);
+    
 
     // 2. Validate all fields exist
     if ([fullname, email, username, password].some((field) => field?.trim() === "")) {
@@ -132,6 +132,13 @@ return res
             "User logged in successfully"
         )
     );
+
+})
+
+
+const logoutUser = asynchandler(async(req, res)=>{
+     
+
 
 })
 

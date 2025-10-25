@@ -137,10 +137,38 @@ return res
 
 
 const logoutUser = asynchandler(async(req, res)=>{
-     
-
+     await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set : {
+                refreshToken : undefined
+            }
+        },
+        {
+            new : true
+        }
+         
+     )
+     const options = {
+    httpOnly: true,
+    secure: true
+};
+return res
+    .status(200)
+    .clearCookie("accessToken", accessToken, options) // ⬅️ Send the access token as a cookie
+    .clearCookie("refreshToken", refreshToken, options) // ⬅️ Send the refresh token as a cookie
+    .json(
+        new ApiResponse(
+            200,
+            {},
+            "User logged OUT in successfully"
+        )
+    );
 
 })
+
+
+
 
 
 
